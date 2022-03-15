@@ -1,0 +1,148 @@
+<div class="container">
+  <!-- This is the card we will format everything into -->
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">Employee Management System</h5>
+      <p class="card-text">ToDO</p>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="addEmployee(template)"
+      >
+        Add Employee
+      </button>
+    </div>
+    <div class="card-footer text-muted">Employee Records</div>
+
+    <!-- This is the table containing the data -->
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Employee ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Mobile Number</th>
+          <th scope="col">Salary</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeData">
+          <th scope="row">{{ employee.id }}</th>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.mobile }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>
+            <button
+              class="btn btn-warning"
+              (click)="updateEmployee(template, employee)"
+            >
+              Update</button
+            ><button class="btn btn-danger" (click)="deleteEmployee(employee)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- This the the modal for adding and updating information -->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ modalTitle }}</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <!-- This will contain a reactive form -->
+  <div class="modal-body">
+    <form [formGroup]="addEditForm">
+      <div class="form-group mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          formControlName="firstName"
+          type="text"
+          class="form-control"
+          id="firstName"
+          aria-describedby="firstName"
+          placeholder="Enter First Name"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          formControlName="lastName"
+          type="text"
+          class="form-control"
+          id="lastName"
+          aria-describedby="lastName"
+          placeholder="Enter Last Name"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="email"
+          aria-describedby="email"
+          placeholder="Enter Email Address"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="mobileNumber" class="form-label">Mobile Number</label>
+        <input
+          formControlName="mobile"
+          type="text"
+          class="form-control"
+          id="mobileNumber"
+          aria-describedby="mobileNumber"
+          placeholder="Enter Mobile Number"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input
+          formControlName="salary"
+          type="text"
+          class="form-control"
+          id="salary"
+          aria-describedby="salary"
+          placeholder="Enter Salary"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      *ngIf="showAdd"
+      type="button"
+      class="btn btn-primary"
+      (click)="postEmployeeDetails()"
+    >
+      {{ saveOrUpdate }}
+    </button>
+    <button
+      *ngIf="showUpdate"
+      type="button"
+      class="btn btn-primary"
+      (click)="putEmployeeDetails()"
+    >
+      {{ saveOrUpdate }}
+    </button>
+    <button type="button" class="btn btn-danger" (click)="modalRef?.hide()">
+      {{ closeBtnName }}
+    </button>
+  </div>
+</ng-template>

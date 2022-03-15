@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "Tommy",
+      "lastName": "Persaud",
+      "email": "tpersaud27@gmail.com",
+      "mobile": "2012793254",
+      "salary": "Not Enough"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
