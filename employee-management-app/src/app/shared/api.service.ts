@@ -27,6 +27,7 @@ export class ApiService {
   }
 
   // Put Request
+  // This will be updting an employee based on id
   updateEmployee(data: any, id: number) {
     return this.http.put<any>('http://localhost:3000/posts/' + id, data).pipe(
       map((res: any) => {
