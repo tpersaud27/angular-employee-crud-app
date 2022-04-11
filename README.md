@@ -12,6 +12,6 @@ read, update, and delete employee records.
 - Ngx Boostrap
 - Boostrap 5
 
-## Installation
+## Installation / How to Use
 
-For information on how to run the application. Please visit the README page of the app.
+For information on how to run the application. Please visit the README page of the app (employee-management-app/README.md).
